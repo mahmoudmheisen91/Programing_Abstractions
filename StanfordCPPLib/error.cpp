@@ -28,7 +28,7 @@ std::string ErrorException::getMessage() const {
 }
 
 const char *ErrorException::what() const throw () {
-    // stepp : The original "Error: " prefix is commented out here,
+    // step : The original "Error: " prefix is commented out here,
     // because in many error cases, the attempt to do the string concatenation
     // ends up garbling the string and leading to garbage exception text
     // return ("Error: " + msg).c_str();
@@ -39,7 +39,7 @@ const char *ErrorException::what() const throw () {
  * Implementation notes: error
  * ---------------------------
  * Earlier implementations of error made it possible, at least on the
- * Macintosh, to help the debugger generate a backtrace at the point
+ * MacIntosh, to help the debugger generate a backtrace at the point
  * of the error.  Unfortunately, doing so is no longer possible if
  * the errors are catchable.
  */
