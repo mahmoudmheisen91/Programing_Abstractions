@@ -8,7 +8,7 @@
 /*
 * File: chapterOneProblems.cpp
 * ------------------
-* This program contain chapter one problems from
+* This file contain chapter one problems from
 * Programming Abstractions in C++, Eric S. Roberts and Julie Zelenski
 */
 #include "chapterOneProblems.hpp"
@@ -118,35 +118,6 @@ int karlFriedrichSum(int number) {
 	if ((number % 10)) error("Choose a number that is multiple of 10");
 	return (1 + number) * (number / 2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
