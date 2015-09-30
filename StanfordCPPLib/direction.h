@@ -22,7 +22,7 @@ enum Direction { NORTH, EAST, SOUTH, WEST };
 
 /*
  * Function: leftFrom
- * Usage: Direction newdir = leftFrom(dir);
+ * Usage: Direction newDir = leftFrom(dir);
  * ----------------------------------------
  * Returns the direction that is to the left of the argument.
  */
@@ -40,7 +40,7 @@ Direction rightFrom(Direction dir);
 
 /*
  * Function: opposite
- * Usage: Direction newdir = opposite(dir);
+ * Usage: Direction newDir = opposite(dir);
  * ----------------------------------------
  * Returns the direction that is opposite to the argument.
  */
