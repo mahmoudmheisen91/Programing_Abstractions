@@ -1,0 +1,52 @@
+inputFile.txt
+ Created on: Oct 2, 2015
+     Author: redapple
+
+
+
+
+#include "chapterThreeProblems.hpp"
+
+
+
+void clearComments(std::ifstream& input, std::ofstream& output) {
+	char first, second;
+
+	while((first = input.get()) != EOF) {
+		if(first ==  '/') {
+			second = input.get();
+			if(second == '*') {
+				continue;
+			}
+			else {
+				output.put(first);
+				output.put(second);
+			}
+		}
+		else {
+			output.put(second);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

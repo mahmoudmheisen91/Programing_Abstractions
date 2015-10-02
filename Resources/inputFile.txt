@@ -1,0 +1,68 @@
+inputFile.txt
+ Created on: Oct 2, 2015
+     Author: redapple
+
+/*
+ * chapterThreeProblems.cpp
+ *
+ *  Created on: Oct 2, 2015
+ *      Author: Mahmoud Mheisen
+ */
+
+/*
+* File: chapterThreeProblems.cpp
+* ------------------
+* This file contain chapter two problems from
+* Programming Abstractions in C++, Eric S. Roberts and Julie Zelenski
+*/
+#include "chapterThreeProblems.hpp"
+
+
+/*
+ * Function: clearComments
+ * Usage: clearComments(input, output);
+ * -------------------------------------
+ * This function copy the input file and remove the comments from it
+ * and put it in the output file
+ */
+void clearComments(std::ifstream& input, std::ofstream& output) {
+	char first, second;
+
+	while((first = input.get()) != EOF) {
+		if(first ==  '/') {
+			second = input.get();
+			if(second == '*') {
+				continue;
+			}
+			else {
+				output.put(first);
+				output.put(second);
+			}
+		}
+		else {
+			output.put(second);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
