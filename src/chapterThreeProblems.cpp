@@ -8,7 +8,7 @@
 /*
 * File: chapterThreeProblems.cpp
 * ------------------
-* This file contain chapter two problems from
+* This file contain chapter three problems from
 * Programming Abstractions in C++, Eric S. Roberts and Julie Zelenski
 */
 #include "chapterThreeProblems.hpp"
