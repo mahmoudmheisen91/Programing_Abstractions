@@ -175,7 +175,7 @@ void reportResults(int nServed, long totalWait, long totalLength) {
 
 /* Returns true if a string contains only alphabetic characters. */
 bool isAllAlpha(string & str) {
-	for (int i = 0; i < str.length(); i++) {
+	for (unsigned int i = 0; i < str.length(); i++) {
 		if (!isalpha(str[i])) return false;
 	}
 	return true;
@@ -251,7 +251,7 @@ bool isPalindrome(std::string word) {
 
 	int last = word.length() - 1;
 
-	for(int i = 0; i < word.length(); i++) {
+	for(unsigned int i = 0; i < word.length(); i++) {
 		if(!(word[i] == word[last]))
 			return false;
 		last--;
@@ -259,13 +259,63 @@ bool isPalindrome(std::string word) {
 	return true;
 }
 
+void morseCode(void) {
+	std::string line = getLine("Enter a message: ");
 
+	Map<std::string, std::string> symbolTable;
+	constructSymbolTable(symbolTable);
 
+	if(isalpha(line[0]))
+		toMorse(line, symbolTable);
+	else
+		toAlpha(line, symbolTable);
+}
 
+void constructSymbolTable(Map<std::string, std::string>& symbolTable) {
+	std::ifstream morseFile;
 
+	morseFile.open("Resources/morse.txt");
+	if(morseFile.fail())
+		error("Unable to open file");
 
+	std::string line;
+	while(true) {
+		getline(morseFile, line);
+		if(morseFile.fail()) break;
+		symbolTable.add(line.substr(0, 1), line.substr(1));
+		symbolTable.add(line.substr(1), line.substr(0, 1));
+	}
 
+	morseFile.close();
+}
 
+void toMorse(std::string word, Map<std::string, std::string>& symbolTable) {
+	for(unsigned int i = 0; i < word.length(); i++) {
+		std::string letter = toUpperCase(charToString(word[i]));
+
+		if(symbolTable.containsKey(letter))
+			cout << symbolTable.get(letter) << " / ";
+		else
+			cout << "N";
+	}
+	cout << endl;
+}
+
+void toAlpha(std::string word, Map<std::string, std::string>& symbolTable) {
+	TokenScanner scanner;
+	scanner.ignoreWhitespace();
+
+	for(char i = 'A'; i < 'Z'; i++)
+		scanner.addWordCharacters(symbolTable.get(charToString(i)));
+
+	scanner.setInput(word);
+
+	while(scanner.hasMoreTokens()) {
+		std::string symbol = scanner.nextToken();
+		cout << symbolTable.get(symbol);
+	}
+	cout << endl;
+}
 
 
 

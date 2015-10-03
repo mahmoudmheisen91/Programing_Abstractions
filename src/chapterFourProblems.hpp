@@ -29,6 +29,10 @@ void twoLetters(void);
 void checkSpelling(void);
 void countWordFrequency(void);
 bool isPalindrome(std::string word);
+void morseCode(void);
+void constructSymbolTable(Map<std::string, std::string>& symbolTable);
+void toMorse(std::string word, Map<std::string, std::string>& symbolTable);
+void toAlpha(std::string word, Map<std::string, std::string>& symbolTable);
 
 #endif /* SRC_CHAPTERFOURPROBLEMS_HPP_ */
 
