@@ -206,7 +206,6 @@ void checkSpelling(void) {
 	askUserForInputFile("Enter file name: ", infile);
 
 	Lexicon dictionary("Resources/dictionary2.txt");
-
 	TokenScanner scanner(infile);
 
 	while(scanner.hasMoreTokens()) {
@@ -218,6 +217,70 @@ void checkSpelling(void) {
 
 	infile.close();
 }
+
+void countWordFrequency(void) {
+	std::ifstream infile;
+	askUserForInputFile("Enter file name: ", infile);
+
+	Map<std::string, int> wordCounts;
+	TokenScanner scanner(infile);
+
+	while(scanner.hasMoreTokens()) {
+		std::string word = toLowerCase(scanner.nextToken());
+		if(isAllAlpha(word)) {
+			if(wordCounts.containsKey(word))
+				wordCounts[word]++;
+			else
+				wordCounts[word] = 1;
+		}
+	}
+
+	for(std::string word : wordCounts) {
+		cout << setw(10) << left << word << setw(3) << wordCounts[word] << endl;
+	}
+}
+
+bool isPalindrome(std::string word) {
+	if(word.length() < 1)
+		error("The word length is zero");
+	if(!isAllAlpha(word))
+		error("The word is not valid");
+
+	if(word.length() == 1)
+		return true;
+
+	int last = word.length() - 1;
+
+	for(int i = 0; i < word.length(); i++) {
+		if(!(word[i] == word[last]))
+			return false;
+		last--;
+	}
+	return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

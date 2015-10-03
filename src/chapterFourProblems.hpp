@@ -15,14 +15,7 @@
 #include <cmath>
 #include <cctype>
 
-#include "../StanfordCPPLib/simpio.h"
-#include "../StanfordCPPLib/error.h"
-#include "../StanfordCPPLib/random.h"
-#include "../StanfordCPPLib/vector.h"
-#include "../StanfordCPPLib/queue.h"
-#include "../StanfordCPPLib/grid.h"
-#include "../StanfordCPPLib/lexicon.h"
-#include "../StanfordCPPLib/tokenscanner.h"
+#include "StanfordCPPLib.hpp"
 using namespace std;
 
 /* functions prototypes */
@@ -34,6 +27,8 @@ void reportResults(int nServed, long totalWait, long totalLength);
 bool isAllAlpha(string & str);
 void twoLetters(void);
 void checkSpelling(void);
+void countWordFrequency(void);
+bool isPalindrome(std::string word);
 
 #endif /* SRC_CHAPTERFOURPROBLEMS_HPP_ */
 
