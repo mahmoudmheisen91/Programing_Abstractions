@@ -97,6 +97,7 @@ std::string suitToString(SuitT suit) {
 		case Spades: return "S";
 		default: return "";
 	}
+	return "";
 }
 
 
