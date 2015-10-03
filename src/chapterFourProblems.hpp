@@ -33,7 +33,7 @@ void morseCode(void);
 void constructSymbolTable(Map<std::string, std::string>& symbolTable);
 void toMorse(std::string word, Map<std::string, std::string>& symbolTable);
 void toAlpha(std::string word, Map<std::string, std::string>& symbolTable);
-
+void interpreter(void);
 #endif /* SRC_CHAPTERFOURPROBLEMS_HPP_ */
 
 

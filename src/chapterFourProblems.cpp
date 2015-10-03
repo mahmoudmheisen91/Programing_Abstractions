@@ -317,7 +317,52 @@ void toAlpha(std::string word, Map<std::string, std::string>& symbolTable) {
 	cout << endl;
 }
 
+void interpreter(void) {
+	std::string line;
+	TokenScanner scanner;
+	scanner.ignoreWhitespace();
+	scanner.scanNumbers();
+	Map<std::string, std::string> symbolTable;
 
+	cout << "Interpreter is running: " << endl;
+
+	// Main loop:
+	std::string key, value;
+	while(true) {
+		cout << "> ";
+		line = getLine();
+
+		if(line == "quit")
+			break;
+
+		else if(line == "list") {
+			for(std::string key : symbolTable) {
+				cout << key << " = " << symbolTable.get(key) << endl;
+			}
+		}
+
+		else if(symbolTable.containsKey(line))
+			cout << symbolTable.get(line) << endl;
+
+		// Parse statements:
+		else {
+			scanner.setInput(line);
+			bool isValue = false;
+			while(scanner.hasMoreTokens()) {
+				std::string token = scanner.nextToken();
+				if(isValue)
+					value = token;
+				else if(token == "=")
+					isValue = true;
+				else
+					key = token;
+			}
+			symbolTable.add(key, value);
+		}
+	}
+
+	cout << "Interpreter is stopped." << endl;
+}
 
 
 
