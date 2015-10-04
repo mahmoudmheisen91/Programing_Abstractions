@@ -29,7 +29,7 @@ class GMouseEvent;
  * ------------------------
  * This block contains all data pertaining to the window.  Shallow copying
  * of the <code>GWindow</code> object ensures that all copies refer to the
- * same onscreen window.
+ * same on screen window.
  */
 struct GWindowData {
     double windowWidth;
