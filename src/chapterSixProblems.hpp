@@ -36,6 +36,10 @@ void generateGrayCode(int nbits);
 void toGray(std::string word, int nbits);
 int numberOfPartitions(int array[], int length, int target);
 void countPartitions(int array[], int length, int target, int element, int& count);
+void drawCoastline(double length, double theta, int order);
+void drawFractalCoast(GWindow& app, double& x, double& y, double length, double theta, int order);
+void drawTree(void);
+void drawFractalTree(GWindow& app, double& x, double& y, double length, int length2, double theta);
 
 
 #endif /* SRC_CHAPTERSIXPROBLEMS_HPP_ */
