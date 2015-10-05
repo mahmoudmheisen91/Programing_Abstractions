@@ -8,7 +8,7 @@
 /*
 * File: chapterSixProblems.cpp
 * ------------------
-* This file contain chapter size problems from
+* This file contain chapter six problems from
 * Programming Abstractions in C++, Eric S. Roberts and Julie Zelenski
 */
 #include "chapterSixProblems.hpp"
@@ -171,6 +171,98 @@ void countPartitions(int array[], int length, int target, int element, int& coun
 		countPartitions(array, length, target, element+1, count);
 	}
 }
+
+/*
+* Function: drawCoastline
+* Usage: drawCoastline(length, theta, order);
+* -------------------------------------------
+* The DrawCoastline function starts at the current (x, y)
+* position and draws a fractal coastline of the specified
+* length moving in the direction given by the angle theta
+* (as defined in the definition of DrawPolarLine in the
+* preceding problem); order gives the number of recursive
+* subdivisions into which each segment will be divided.
+*/
+void drawCoastline(double length, double theta, int order) {
+	GWindow app(600, 400);
+	app.center();
+	app.setColor("gray");
+	double x = app.getWidth() / 2 - length / 2;
+	double y = app.getHeight() / 2 - .5 * length / 6;
+	drawFractalCoast(app, x, y, length, theta, order);
+}
+
+void drawFractalCoast(GWindow& app, double& x, double& y, double length, double theta, int order) {
+	if(order == 0) {
+		GPoint end = app.drawPolarLine(x, y, length, theta);
+		x = end.getX();
+		y = end.getY();
+	} else {
+		drawFractalCoast(app, x, y, length/3, theta, order-1);
+		if(randomBool()) {
+			drawFractalCoast(app, x, y, length/3, theta + 60, order-1);
+			drawFractalCoast(app, x, y, length/3, theta - 60, order-1);
+		} else {
+			drawFractalCoast(app, x, y, length/3, theta - 60, order-1);
+			drawFractalCoast(app, x, y, length/3, theta + 60, order-1);
+		}
+		drawFractalCoast(app, x, y, length/3, theta, order-1);
+	}
+}
+
+void drawTree(void) {
+	GWindow app(600, 600);
+	app.center();
+
+	double length = 80;
+	double x = app.getWidth() / 2;
+	double y = app.getHeight() - 50;
+
+	GPoint end = app.drawPolarLine(x, y, length, 90);
+	x = end.getX();
+	y = end.getY();
+
+	drawFractalTree(app, x, y, length, 7, 60);
+}
+
+void drawFractalTree(GWindow& app, double& x, double& y, double length, int length2, double theta) {
+	double tx = x;
+	double ty = y;
+	length = length * .85;
+	if(length2 > 0) {
+		//if(randomChance(length/81)) {
+			GPoint end = app.drawPolarLine(x, y, length, theta);
+			x = end.getX();
+			y = end.getY();
+			drawFractalTree(app, x, y, length, length2-1, theta-30);
+			x=tx;
+			y=ty;
+		//}
+		//if(randomChance(length/81)) {
+			end = app.drawPolarLine(x, y, length, theta+60);
+			x = end.getX();
+			y = end.getY();
+			drawFractalTree(app, x, y, length, length2-1, theta+30);
+		//}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
