@@ -27,15 +27,16 @@ void mondrianPaint(void);
 void divide(GWindow& app, int x, int y, int width, int height);
 void KochFractal(double size, int order);
 void drawFractalLine(GWindow& app, double& x, double& y, double len, double theta, int order);
-void drawPolarLine(GWindow& app, double& x, double& y, double r, double theta);
 int numberOfHanoiMoves(int disks);
 void countNumber(int disks, int& count);
 void moveTower2(int n, char start, char finish, char temp);
 void generateBinaryCode(int nbits);
 void toBinary(std::string word, int nbits);
-
 void generateGrayCode(int nbits);
 void toGray(std::string word, int nbits);
+int numberOfPartitions(int array[], int length, int target);
+void countPartitions(int array[], int length, int target, int element, int& count);
+
 
 #endif /* SRC_CHAPTERSIXPROBLEMS_HPP_ */
 
