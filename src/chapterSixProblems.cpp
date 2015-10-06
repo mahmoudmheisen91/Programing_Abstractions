@@ -12,6 +12,7 @@
 * Programming Abstractions in C++, Eric S. Roberts and Julie Zelenski
 */
 #include "chapterSixProblems.hpp"
+#include <algorithm>
 
 /* Constants */
 const double MIN_AREA = 2500;
@@ -141,15 +142,28 @@ void toBinary(std::string word, int nbits) {
 }
 
 void generateGrayCode(int nbits) {
-	toGray("", nbits);
+	vector<std::string> v;
+	v.push_back("0");
+	v.push_back("1");
+	toGray(v, nbits);
 }
 
-void toGray(std::string word, int nbits) {
-	if(nbits == 0)
-		cout << word << endl;
+void toGray(vector<std::string>& vec, int nbits) {
+	if(nbits == 1) {
+		copy(vec.begin(), vec.end(), ostream_iterator<string>(cout, "\n")), cout << endl;
+	}
 	else {
-		toGray(word + "0", nbits-1);
-		toGray(word + "1", nbits-1);
+		// Copy and reverse:
+		int size = vec.size();
+		for(int i = 0; i < size; i++)
+			vec.push_back(vec[size-1-i]);
+
+		// Append 0 and 1:
+		for(int i = 0; i < 2 * size; i++) {
+			if(i < size) vec[i] = "0" + vec[i];
+			else		 vec[i] = "1" + vec[i];
+		}
+		toGray(vec, nbits-1);
 	}
 }
 
@@ -211,7 +225,7 @@ void drawFractalCoast(GWindow& app, double& x, double& y, double length, double 
 }
 
 void drawTree(void) {
-	GWindow app(600, 600);
+	GWindow app(800, 600);
 	app.center();
 
 	double length = 80;
@@ -222,7 +236,7 @@ void drawTree(void) {
 	x = end.getX();
 	y = end.getY();
 
-	drawFractalTree(app, x, y, length, 7, 60);
+	drawFractalTree(app, x, y, length, 10, 60);
 }
 
 void drawFractalTree(GWindow& app, double& x, double& y, double length, int length2, double theta) {
@@ -230,24 +244,24 @@ void drawFractalTree(GWindow& app, double& x, double& y, double length, int leng
 	double ty = y;
 	length = length * .85;
 	if(length2 > 0) {
-		//if(randomChance(length/81)) {
+		if(length2 > 5 || randomChance(length/50)) {
+			app.setColor("blue");
 			GPoint end = app.drawPolarLine(x, y, length, theta);
 			x = end.getX();
 			y = end.getY();
 			drawFractalTree(app, x, y, length, length2-1, theta-30);
 			x=tx;
 			y=ty;
-		//}
-		//if(randomChance(length/81)) {
-			end = app.drawPolarLine(x, y, length, theta+60);
+		}
+		if(length2 > 5 || randomChance(length/50)) {
+			app.setColor("red");
+			GPoint end = app.drawPolarLine(x, y, length, theta+60);
 			x = end.getX();
 			y = end.getY();
 			drawFractalTree(app, x, y, length, length2-1, theta+30);
-		//}
+		}
 	}
 }
-
-
 
 
 

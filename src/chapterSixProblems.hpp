@@ -33,7 +33,7 @@ void moveTower2(int n, char start, char finish, char temp);
 void generateBinaryCode(int nbits);
 void toBinary(std::string word, int nbits);
 void generateGrayCode(int nbits);
-void toGray(std::string word, int nbits);
+void toGray(vector<std::string>& vec, int nbits);
 int numberOfPartitions(int array[], int length, int target);
 void countPartitions(int array[], int length, int target, int element, int& count);
 void drawCoastline(double length, double theta, int order);
