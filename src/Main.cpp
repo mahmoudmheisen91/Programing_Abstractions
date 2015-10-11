@@ -6,13 +6,16 @@
  */
 
 #include "chapterOneCodes.hpp"
-#include "chapterOneProblems.hpp"
 #include "numToEnglishTextApp.hpp"
+#include "chapterOneProblems.hpp"
 #include "chapterTwoProblems.hpp"
 #include "chapterThreeProblems.hpp"
 #include "chapterFourProblems.hpp"
 #include "chapterFiveProblems.hpp"
 #include "chapterSixProblems.hpp"
+#include "chapterEightProblems.hpp"
+#include "StopWatch.hpp"
+#include "Scanner.hpp"
 
 /* main for all code */
 int main(void) {
@@ -20,31 +23,40 @@ int main(void) {
 	//runSimulation();
 	//checkSpelling();
 	//countWordFrequency();
-	//morseCode();
 	//interpreter();
 	//moveTower(3, 'A', 'B', 'C');
 	//listPermutations("ABC");
 
-	/*GWindow app(600, 400);
-	app.center();
-
-	GLine line(150, 180, 30, 50);
-	line.setColor("red");
-	line.setLineWidth(5);
-
-	GRect rect(300, 200, 50, 50);
-	rect.setColor("blue");
-	rect.setLineWidth(3);
-
-	app.draw(line);
-	app.draw(rect);*/
-
 	//mondrianPaint();
 	//KochFractal(250, 9);
-	//cout << numberOfHanoiMoves(10);
-	//moveTower2(3, 'A', 'B', 'C');
-	generateGrayCode(2);
+	//drawCoastline(650, -10, 9);
+	//generateGrayCode(3);
+	//drawTree();
 
+	Vector<int> vec;
+	vec.push_back(5);
+	vec.push_back(3);
+	vec.push_back(1);
+	vec.push_back(5);
+	vec.push_back(3);
+	vec.push_back(1);
+	vec.push_back(5);
+	vec.push_back(3);
+	vec.push_back(1);
+	vec.push_back(5);
+	vec.push_back(3);
+	vec.push_back(1);
+	vec.push_back(5);
+	vec.push_back(3);
+	vec.push_back(1);
+
+	Scanner scanner("this is a , f45 2 3 3; test:");
+	scanner.ignoreSpaces();
+
+	while(scanner.hasMoreToken()) {
+		std::string token = scanner.nextToken();
+		cout << token << endl;
+	}
 	return 0;
 }
 
