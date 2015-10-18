@@ -29,7 +29,7 @@ void Scanner::setInput(std::string line) {
 
 std::string Scanner::nextToken(void) {
 	if (index == -1)
-		error("setInput has not been called");
+		error("Input has not been set");
 
 	if (skipSpaceFlag) skipSpaces();
 
@@ -48,7 +48,7 @@ std::string Scanner::nextToken(void) {
 
 bool Scanner::hasMoreToken(void) {
 	if (index == -1)
-		error("setInput has not been called");
+		error("Input has not been set");
 
 	if (skipSpaceFlag) skipSpaces();
 
