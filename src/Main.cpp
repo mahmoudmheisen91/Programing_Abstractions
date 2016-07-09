@@ -51,7 +51,7 @@ int main(void) {
 	vec.push_back(1);
 
 	Scanner scanner("this is a , f45 2 3 3; test:");
-	scanner.ignoreSpaces();
+	//scanner.ignoreSpaces();
 
 	while(scanner.hasMoreToken()) {
 		std::string token = scanner.nextToken();
